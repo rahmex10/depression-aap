@@ -50,7 +50,7 @@ data2.drop('language', 1, inplace= True)
 combined_data = pd.concat([data1, data2], 0, ignore_index= True )
 
 import string
-from nltk.corpus import stopwords
+nltk.download('stopwords')
 
 def text_process(mess):
     """
