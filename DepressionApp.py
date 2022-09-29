@@ -50,7 +50,9 @@ data2.drop('language', 1, inplace= True)
 combined_data = pd.concat([data1, data2], 0, ignore_index= True )
 
 import string
-nltk.download('stopwords')
+#nltk.download('stopwords')
+from nltk.corpus import stopwords
+stop_words = set(stopwords.words('english'))
 
 def text_process(mess):
     """
@@ -66,7 +68,7 @@ def text_process(mess):
     nopunc = ''.join(nopunc)
     
     # Now just remove any stopwords
-    return [word for word in nopunc.split() if word.lower() not in stopwords.words('english')]
+    return [word for word in nopunc.split() if word.lower() not in stop_words]
 
 
 from sklearn.feature_extraction.text import CountVectorizer
